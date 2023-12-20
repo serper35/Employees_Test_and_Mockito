@@ -35,7 +35,7 @@ public class ControllerDepartments {
     }
 
     @GetMapping("/all")
-    public Map<Integer,List<Employees>> allEmp(){
+    public Map<Integer,List<Employees>> allEmployyes(){
         return departmentService.allEmployees();
     }
 }
