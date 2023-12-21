@@ -10,4 +10,6 @@ public interface DepartmentService {
 
     Map<Integer,List<Employees>> allEmployees();
     List<Employees> employeesByDep(int dep);
+
+    double sumOfSalaryByDep(int dep);
 }
