@@ -29,7 +29,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Employees maxSalaryEmployee(int dep) {
-        return employeeService.workers.values().stream()
+        return employeeService.getInfo().values().stream()
                 .filter(e -> e.getDepartment() == dep)
                 .max(Comparator.comparingDouble(emp -> emp.getSalary()))
                 .orElseThrow();
@@ -37,14 +37,22 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Map<Integer, List<Employees>> allEmployees() {
-        return employeeService.workers.values().stream()
+        return employeeService.getInfo().values().stream()
                 .collect(Collectors.groupingBy(e -> e.getDepartment()));
     }
 
     @Override
     public List<Employees> employeesByDep(int dep) {
-        return employeeService.workers.values().stream()
+        return employeeService.getInfo().values().stream()
                 .filter(e -> e.getDepartment() == dep)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public double sumOfSalaryByDep(int dep) {
+        return employeeService.getInfo().values().stream()
+                .filter(e -> e.getDepartment() == dep)
+                .mapToDouble(e -> e.getSalary())
+                .sum();
     }
 }

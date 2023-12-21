@@ -31,7 +31,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     ));
 
     @Override
-    public String addEmployee(String name, String lastName, int department, double salary) {
+    public Employees addEmployee(String name, String lastName, int department, double salary) {
 
         Employees employees = new Employees(name, lastName, department, salary);
 
@@ -47,7 +47,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         if (workers.size() < WORKER_SIZE) {
             workers.put(name + lastName, employees);
-            return "Сотрудник " + employees + " добавлен.";
+            return employees;
         } else {
             throw new EmployeeStorageIsFullException("База данных переполнена.");
         }
